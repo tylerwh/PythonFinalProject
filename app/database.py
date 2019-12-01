@@ -34,6 +34,11 @@ class Database:
         self.conn.commit()
 
     
+    def drop_table(self):
+        self.cur.execute("DROP TABLE IF EXISTS list")
+        self.conn.commit()
+    
+    
     def export_list_to_csv(self):
         print("Exporting data into CSV............")
 

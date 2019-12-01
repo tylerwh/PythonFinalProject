@@ -51,7 +51,9 @@ def print_list():
 def delete_list():
     msg_box = messagebox.askquestion('WARNING!', 'You are about to delete your entire list. Are you sure you would like to continue?')
     if msg_box == 'yes':
-        pass
+        db.drop_table()
+        generate_list()
+        messagebox.showinfo('List Deleted', 'The deed is done..')
     else:
         messagebox.showinfo('Returning...', 'Got it')
 
