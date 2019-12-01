@@ -62,6 +62,7 @@ def exit_app():
     msg_box = messagebox.askquestion('Is this goodbye?', 'Are you sure you would like to exit the application?')
     if msg_box == 'yes':
         messagebox.showinfo('Leaving...', 'Goodbye, my friend.')
+        db.__del__()
         app.destroy()
     else:
         messagebox.showinfo('Returning...', 'Good. I never liked goodbyes.')
