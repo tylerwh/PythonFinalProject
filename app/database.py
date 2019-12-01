@@ -10,25 +10,30 @@ class Database:
             "CREATE TABLE IF NOT EXISTS list (id INTEGER PRIMARY KEY, store text, item text, price text)")
         self.conn.commit()
 
+    
     def fetch(self):
         self.cur.execute("SELECT * FROM list")
         rows = self.cur.fetchall()
         return rows
 
+    
     def insert(self, store, item, price):
         self.cur.execute(
             "INSERT INTO list VALUES (NULL, ?, ?, ?)", (store, item, price))
         self.conn.commit()
 
+    
     def remove(self, id):
         self.cur.execute("DELETE FROM list WHERE id=?", (id,))
         self.conn.commit()
 
+    
     def update(self, id, store, item, price):
         self.cur.execute(
             "UPDATE list SET store = ?, item = ?, price = ? WHERE id = ?", (store, item, price, id))
         self.conn.commit()
 
+    
     def export_list_to_csv(self):
         print("Exporting data into CSV............")
 
@@ -46,6 +51,7 @@ class Database:
                 # write_file.write(str(row))
         print("Finished exporting")
 
+    
     def __del__(self):
         self.conn.close()
 
